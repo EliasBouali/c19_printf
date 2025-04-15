@@ -14,20 +14,24 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	while (format[i])
 	{
-		if (format == '%' && format[i + 1])
+		if (format[i] == '%' && format[i + 1])
 		{
 			i++;
 			if (format[i] == 'c')
 				count += ft_putchar(va_arg(args, int));
 			else if (format[i] == 's')
 				count += ft_putstr(va_arg(args, char *));
-			else if (format[i] == 'd' || format == 'i')
+			else if (format[i] == 'd' || format[i] == 'i')
 				count += ft_putnbr(va_arg(args, int));
 			else if (format[i] == 'u')
 				count += ft_put_unsigned(va_arg(args, unsigned int));
 			else if (format[i] == 'x' || format[i] == 'X')
 				count += ft_puthex(va_arg(args, unsigned int),
 						format[i] == 'X');
+			else if (format[i] == '%')
+				count += ft_putchar('%');
+			else if (format[i] == 'p')
+			count += 
 			else
 				count += whrite(1, &format[i], 1);
 		}
