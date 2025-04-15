@@ -11,8 +11,8 @@ int	ft_printf(const char *format, ...)
 
 	i = 0;
 	count = 0;
-	va_start(args, format);
 	if(!format)
+	va_start(args, format);
 		return 1;
 	while (format[i])
 	{
