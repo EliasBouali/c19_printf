@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int	ft_printf(const char *format, ...)
 // le format est une convention et les ... nous permet d'accepte un nombre variable d'arguments
+int	ft_printf(const char *format, ...)
 {
 	va_list args; // args convention pour arguments.
 	int i;
@@ -11,7 +11,9 @@ int	ft_printf(const char *format, ...)
 
 	i = 0;
 	count = 0;
+	if(!format)
 	va_start(args, format);
+		return 1;
 	while (format[i])
 	{
 		if (format == '%' && format[i + 1])
@@ -36,3 +38,4 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	reurn(count);
 }
+
