@@ -10,33 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
+
+static int	safe_add(int *count, int value)
+{
+	if (value == -1)
+		return (-1);
+	*count += value;
+	return (0);
+}
 
 int	ft_put_unsigned(unsigned int n)
 {
-	int		count;
-	int		result;
+	int		count = 0;
 	char	c;
 
-	count = 0;
 	if (n >= 10)
 	{
-		result = ft_put_unsigned(n / 10);
-		if (result == -1)
+		if (safe_add(&count, ft_put_unsigned(n / 10)) == -1)
 			return (-1);
-		count += result;
-		result = ft_put_unsigned(n % 10);
-		if (result == -1)
+		if (safe_add(&count, ft_put_unsigned(n % 10)) == -1)
 			return (-1);
-		count += result;
 	}
 	else
 	{
 		c = n + '0';
-		result = write(1, &c, 1);
-		if (result == -1)
+		if (safe_add(&count, write(1, &c, 1)) == -1)
 			return (-1);
-		count += result;
 	}
 	return (count);
 }
+

@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdint.h>
+#include "ft_printf.h"
 
 // Fonction récursive pour afficher un entier en base 16
 static int ft_putptr_base(uintptr_t n)
@@ -49,4 +48,3 @@ int ft_print_ptr(void *ptr)
         return (-1);
     return (count + res);
 }
-

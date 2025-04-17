@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
 
 int ft_puthex(unsigned int n, int is_upper)
 {
@@ -30,7 +30,6 @@ int ft_puthex(unsigned int n, int is_upper)
             return (-1);
         count += result;
     }
-
     result = write(1, &hex_digits[n % 16], 1);
     if (result == -1)
         return (-1);
@@ -38,4 +37,3 @@ int ft_puthex(unsigned int n, int is_upper)
 
     return (count);
 }
-
