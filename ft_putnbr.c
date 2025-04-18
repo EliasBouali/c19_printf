@@ -6,13 +6,13 @@
 /*   By: ebouali <ebouali@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 18:32:03 by ebouali           #+#    #+#             */
-/*   Updated: 2025/04/16 18:32:05 by ebouali          ###   ########.fr       */
+/*   Updated: 2025/04/18 16:37:22 by ebouali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int safe_add(int *count, int value)
+static int	safe_add(int *count, int value)
 {
 	if (value == -1)
 		return (-1);
@@ -22,9 +22,10 @@ static int safe_add(int *count, int value)
 
 int	ft_putnbr(int n)
 {
-	int count = 0;
-	char c;
+	int		count;
+	char	c;
 
+	count = 0;
 	if (n == -2147483648)
 		return (write(1, "-2147483648", 11));
 	if (n < 0)

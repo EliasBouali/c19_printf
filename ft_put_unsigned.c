@@ -6,7 +6,7 @@
 /*   By: ebouali <ebouali@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 18:32:24 by ebouali           #+#    #+#             */
-/*   Updated: 2025/04/16 18:32:26 by ebouali          ###   ########.fr       */
+/*   Updated: 2025/04/18 16:36:24 by ebouali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ static int	safe_add(int *count, int value)
 
 int	ft_put_unsigned(unsigned int n)
 {
-	int		count = 0;
+	int		count;
 	char	c;
 
+	count = 0;
 	if (n >= 10)
 	{
 		if (safe_add(&count, ft_put_unsigned(n / 10)) == -1)
@@ -40,4 +41,3 @@ int	ft_put_unsigned(unsigned int n)
 	}
 	return (count);
 }
-

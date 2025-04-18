@@ -5,17 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebouali <ebouali@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 18:31:15 by ebouali           #+#    #+#             */
-/*   Updated: 2025/04/16 18:31:17 by ebouali          ###   ########.fr       */
+/*   Created: 2025/04/18 16:21:18 by ebouali           #+#    #+#             */
+/*   Updated: 2025/04/18 16:38:27 by ebouali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
 int	ft_count(const char *format, int i, va_list args)
 {
 	int	count;
 
-  count = 0;
+	count = 0;
 	if (format[i] == 'c')
 		count += ft_putchar(va_arg(args, int));
 	else if (format[i] == 's')
@@ -39,11 +40,10 @@ int	ft_count(const char *format, int i, va_list args)
 }
 
 int	ft_printf(const char *format, ...)
-// le format est une convention et les ... nous permet d'accepte un nombre variable d'arguments
 {
-	va_list args; // args convention pour arguments.
-	int i;
-	int count;
+	va_list	args;
+	int		i;
+	int		count;
 
 	i = 0;
 	count = 0;
@@ -51,18 +51,18 @@ int	ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] == '%' && format[i + 1] && (format[i + 1] == 'c'
-				|| format[i + 1] == 's' || format[i + 1] == 'd' || format[i
-				+ 1] == 'i' || format[i + 1] == 'u' || format[i
-				+ 1] == 'x' || format[i + 1] == 'X' || format[i + 1] == '%'
-        || format[i + 1] == 'p'))
+				|| format[i + 1] == 's' || format[i + 1] == 'd'
+				|| format[i + 1] == 'i' || format[i + 1] == 'u'
+				|| format[i + 1] == 'x' || format[i + 1] == 'X'
+				|| format[i + 1] == '%' || format[i + 1] == 'p'))
 		{
 			i++;
 			count += ft_count(format, i, args);
 		}
-    else
-      count += write(1, &format[i], 1);
+		else
+			count += write(1, &format[i], 1);
 		i++;
 	}
 	va_end(args);
-	return(count);
+	return (count);
 }
